@@ -4,6 +4,8 @@ let prevPkmPage = null;
 let currPkmPage = "https://pokeapi.co/api/v2/pokemon";
 let nextPkmPage = null;
 
+const detailedPokemon = "https://pokeapi.co/api/v2/pokemon/";
+
 export let DataHandler = {
 	_get: function(url, callback) {
 		axios.get(url)
@@ -32,6 +34,9 @@ export let DataHandler = {
 			prevPkmPage = data.previous;
 			callback(data);
 		});
+	},
+	pokemonById: function(id, callback) {
+		this._get(detailedPokemon + id, callback);
 	}
 }
 

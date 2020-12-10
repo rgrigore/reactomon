@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import HomePage from './HomePage';
 import PokemonsPage from './pokemons/PokemonsPage';
 import TypesPage from './types/TypesPage';
+import DetailedPage from './pokemons/detailed/DetailedPage';
 
 export default class NavBar extends Component {
 	render() {
@@ -27,15 +28,10 @@ export default class NavBar extends Component {
 				</nav>
 
 				<Switch>
-					<Route path="/pokemons">
-						<PokemonsPage />
-					</Route>
-					<Route path="/types">
-						<TypesPage />
-					</Route>
-					<Route path="/">
-						<HomePage />
-					</Route>
+					<Route path="/pokemon/:id" component={ DetailedPage } />
+					<Route path="/pokemons" component={ PokemonsPage } />
+					<Route path="/types" component={ TypesPage } />
+					<Route path="/" component={ HomePage } />
 				</Switch>
 			</BrowserRouter>
 		)
