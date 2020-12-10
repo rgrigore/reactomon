@@ -1,0 +1,40 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards-item {
+  display: flex;
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards-item {
+    width: 33%;
+  }
+}
+
+@media (min-width: 50rem) {
+  .cards-item {
+    width: 25%;
+  }
+}
+
+@media (min-width: 63rem) {
+  .cards-item {
+    width: 20%;
+  }
+}
+
+.card {
+  background-color: rgb(178, 200, 206);
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 15px;
+  min-width: 175px;
+}

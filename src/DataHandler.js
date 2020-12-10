@@ -5,34 +5,38 @@ let currPkmPage = "https://pokeapi.co/api/v2/pokemon";
 let nextPkmPage = null;
 
 export let DataHandler = {
-	_get: function(url, callback, dataCallback) {
+	_get: function(url, callback) {
 		axios.get(url)
-			.then(response => {
-				callback(response.data);
-				dataCallback(response.data);
-			})
+			.then(response => callback(response.data))
 			.catch(error => console.log(error));
 	},
 	initPokemons: function(callback) {
-		this._get(currPkmPage, callback, data => {
+		this._get(currPkmPage, data => {
 			prevPkmPage = data.previous;
 			nextPkmPage = data.next;
+			callback(data);
 		});
 	},
 	nextPokemons: function(callback) {
-		this._get(nextPkmPage, callback, data => {
-
+		this._get(nextPkmPage, data => {
 			prevPkmPage = currPkmPage;
 			currPkmPage = nextPkmPage;
 			nextPkmPage = data.next;
+			callback(data);
 		});
 	},
 	previousPokemons: function(callback) {
-		this._get(prevPkmPage, callback, data => {
+		this._get(prevPkmPage, data => {
 			nextPkmPage = currPkmPage;
 			currPkmPage = prevPkmPage;
 			prevPkmPage = data.previous;
+			callback(data);
 		});
+	},
+	getPokemonImage: function(url, callback) {
+		this._get(url, data => {
+			callback(data.sprites.front_default);
+		})
 	}
 }
 

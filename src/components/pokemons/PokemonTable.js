@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import '../../css/PokemonTable.css';
+import PokemonItem from './PokemonItem';
 
 export default class PokemonTable extends Component {
 	render() {
 		return (
-			<div>
-				
-			</div>
+			<ul className="cards mt-3">
+				{ this.props.pokemons.map(pokemon => 
+						<PokemonItem key={ pokemon.name } pokemon={ pokemon } />
+					) }
+			</ul>
 		)
 	}
+}
+
+PokemonTable.propTypes = {
+	pokemons: PropTypes.array.isRequired
 }

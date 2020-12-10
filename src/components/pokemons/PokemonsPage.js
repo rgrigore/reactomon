@@ -32,7 +32,6 @@ export default class PokemonsPage extends Component {
 	}
 
 	render() {
-		console.log(this.state);
 		return (
 			<div className="container-fluid">
 				<h3>Pokemons</h3>
