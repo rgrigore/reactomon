@@ -21,14 +21,17 @@ export let DataHandler = {
 	},
 	nextPokemons: function(callback) {
 		this._get(nextPkmPage, callback, data => {
-			prevPkmPage = data.previous;
+
+			prevPkmPage = currPkmPage;
+			currPkmPage = nextPkmPage;
 			nextPkmPage = data.next;
 		});
 	},
 	previousPokemons: function(callback) {
 		this._get(prevPkmPage, callback, data => {
+			nextPkmPage = currPkmPage;
+			currPkmPage = prevPkmPage;
 			prevPkmPage = data.previous;
-			nextPkmPage = data.next;
 		});
 	}
 }
