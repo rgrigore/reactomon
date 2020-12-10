@@ -32,11 +32,6 @@ export let DataHandler = {
 			prevPkmPage = data.previous;
 			callback(data);
 		});
-	},
-	getPokemonImage: function(url, callback) {
-		this._get(url, data => {
-			callback(data.sprites.front_default);
-		})
 	}
 }
 
