@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const statName = {
@@ -10,17 +10,17 @@ const statName = {
 	speed: "Speed"
 }
 
-export default class StatsItem extends Component {
-	render() {
-		return (
-			<li className="list-group-item d-flex flex-row font-weight-bold">
-				<span className="mr-auto">{ statName[this.props.stat.stat.name] }:</span>
-				<span>{ this.props.stat.base_stat }</span>
-			</li>
-		)
-	}
+const StatsItem = props => {
+	return (
+		<li className="list-group-item d-flex flex-row font-weight-bold">
+			<span className="mr-auto">{ statName[props.stat.stat.name] }:</span>
+			<span>{ props.stat.base_stat }</span>
+		</li>
+	)
 }
 
 StatsItem.propTypes = {
 	stat: PropTypes.object.isRequired
 }
+
+export default StatsItem;
