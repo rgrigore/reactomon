@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 let prevPkmPage = null;
-let currPkmPage = "https://pokeapi.co/api/v2/pokemon";
+let currPkmPage = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=50";
 let nextPkmPage = null;
 
 const detailedPokemon = "https://pokeapi.co/api/v2/pokemon/";

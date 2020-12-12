@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import DataHandler from '../../../DataHandler';
+import InfoTable from './InfoTable';
+import StatsTable from './StatsTable';
 
 export default class DetailedPage extends Component {
 	
@@ -33,11 +35,18 @@ export default class DetailedPage extends Component {
 	}
 
 	render() {
-		console.log(this.state.pokemon);
 		return (
-			<div>
-				{ this.props.match.params.id }
-				{ this.state.pokemon.name }
+			<div className="container-lg w-75 mt-5 rounded-lg" style={{ background: "rgb(230, 255, 253)" }}>
+				<div className="row">
+					<div className="col-4"><img className="img-fluid" src={ this.state.pokemon.sprites.front_default } alt="..." width="100%" /></div>
+					<div className="col-4">
+						<h2 className="font-weight-bold my-3 text-capitalize text-center">{ this.state.pokemon.name }</h2>
+						<InfoTable pokemon={ this.state.pokemon } />
+					</div>
+					<div className="col-4">
+						<StatsTable stats={ this.state.pokemon.stats } />
+					</div>
+				</div>
 			</div>
 		)
 	}
