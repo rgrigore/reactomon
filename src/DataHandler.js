@@ -6,6 +6,8 @@ let nextPkmPage = null;
 
 const detailedPokemon = "https://pokeapi.co/api/v2/pokemon/";
 
+const typesPage = "https://pokeapi.co/api/v2/type";
+
 export let DataHandler = {
 	_get: function(url, callback) {
 		axios.get(url)
@@ -37,6 +39,9 @@ export let DataHandler = {
 	},
 	pokemonById: function(id, callback) {
 		this._get(detailedPokemon + id, callback);
+	},
+	pokemonTypes: function(callback) {
+		this._get(typesPage, callback);
 	}
 }
 
