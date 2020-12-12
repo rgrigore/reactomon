@@ -34,8 +34,7 @@ export default class PokemonsPage extends Component {
 	render() {
 		return (
 			<div className="container-fluid">
-				<h3>Pokemons</h3>
-				<div className="btn-group btn-group-sm" role="group" aria-label="Basic example">
+				<div className="btn-group btn-group-sm mt-2" role="group" aria-label="Basic example">
   				<button type="button" className="btn btn-info" onClick={this.previousPage} disabled={!this.state.prevPage}>Previous</button>
   				<button type="button" className="btn btn-info" onClick={this.nextPage} disabled={!this.state.nextPage}>Next</button>
 				</div>
