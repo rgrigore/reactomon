@@ -6,7 +6,7 @@ import PCContext from './components/contexts/PCContext';
 
 const App = () => {
 
-	const [capturedPKM, setState] = useState([])
+	const [capturedPKM, setCapturedPKM] = useState([])
 
 	const toggleCaptured = id => {
 
@@ -20,7 +20,7 @@ const App = () => {
 			pokemon.push(id);
 			pokemon.sort((a, b) => a - b);
 		}
-		setState(pokemon);
+		setCapturedPKM(pokemon);
 	}
 
 	return (
