@@ -6,13 +6,12 @@ import PCContext from './components/contexts/PCContext';
 
 const App = () => {
 
-	const [state, setState] = useState({
-		capturedPKM: []
-	})
+	const [capturedPKM, setState] = useState([])
 
 	const toggleCaptured = id => {
 
-		const pokemon = state.capturedPKM;
+		const pokemon = [];
+		Array.prototype.push.apply(pokemon, capturedPKM);
 		const index = pokemon.indexOf(id);
 
 		if (index > -1) {
@@ -21,14 +20,12 @@ const App = () => {
 			pokemon.push(id);
 			pokemon.sort((a, b) => a - b);
 		}
-		setState({
-			capturedPKM: pokemon
-		});
+		setState(pokemon);
 	}
 
 	return (
 		<div>
-			<PCContext.Provider value={{ ...state, toggleCaptured }}>
+			<PCContext.Provider value={{ capturedPKM, toggleCaptured }}>
 				<NavBar />
 			</PCContext.Provider>
 		</div>
