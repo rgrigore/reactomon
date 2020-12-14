@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import HomePage from './HomePage';
 import PokemonsPage from './pokemons/PokemonsPage';
 import TypesPage from './types/TypesPage';
+import PCPage from "./pokemons/pc/PCPage";
 import DetailedPage from './pokemons/detailed/DetailedPage';
 
 const NavBar = () => {
@@ -22,6 +23,9 @@ const NavBar = () => {
 						<li className="nav-item">
 							<Link className="nav-link" to="/types">Types</Link>
 						</li>
+						<li className="nav-item">
+							<Link className="nav-link" to="/pc">PC</Link>
+						</li>
 					</ul>
 				</div>
 			</nav>
@@ -31,6 +35,7 @@ const NavBar = () => {
 					<Route path="/pokemon/:id" component={ DetailedPage } />
 					<Route path="/pokemons" component={ PokemonsPage } />
 					<Route path="/types" component={ TypesPage } />
+					<Route path="/pc" component={ PCPage } />
 					<Route path="/" component={ HomePage } />
 				</Switch>
 			</div>
