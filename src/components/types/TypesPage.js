@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import DataHandler from '../../DataHandler';
 import TypesTable from './TypesTable';
 
-export default class TypesPage extends Component {
+const TypesPage = () => {
 
-	state = {
-		types: []
-	}
+	const [types, setTypes] = useState([]);
 
-	componentDidMount() {
-		DataHandler.pokemonTypes(data => this.setState({ types: data.results }));
-	}
+	useEffect(() => {
+		DataHandler.pokemonTypes(data => setTypes(data.results));
+	}, []);
 
-	render() {
-		return (
-			<div className="container-fluid">
-				<TypesTable types={ this.state.types } />
-			</div>
-		)
-	}
+	return (
+		<div className="container-fluid">
+			<TypesTable types={ types } />
+		</div>
+	)
 }
+
+export default TypesPage;

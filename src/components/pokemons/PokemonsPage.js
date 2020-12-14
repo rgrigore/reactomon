@@ -1,45 +1,43 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import PokemonTable from './PokemonTable';
 import DataHandler from '../../DataHandler';
 
-export default class PokemonsPage extends Component {
+const PokemonsPage = () => {
 
-	state = {
+	const [state, setState] = useState({
 		prevPage: false,
 		nextPage: false,
 		pokemons: []
-	};
+	});
 
-	updateState = (data) => {
-		this.setState({
+	const updateState = (data) => {
+		setState({
 			prevPage: data.previous != null,
 			nextPage: data.next != null,
 			pokemons: data.results
 		})
 	}
 
-	nextPage = () => {
-		DataHandler.nextPokemons(this.updateState);
+	const nextPage = () => {
+		DataHandler.nextPokemons(updateState);
 	};
 
-	previousPage = () => {
-		DataHandler.previousPokemons(this.updateState);
+	const previousPage = () => {
+		DataHandler.previousPokemons(updateState);
 	};
 
-	componentDidMount() {
-		DataHandler.initPokemons(this.updateState);
-	}
+	useEffect(() => { DataHandler.initPokemons(updateState); }, []);
 
-	render() {
-		return (
-			<div className="container-fluid">
-				<div className="btn-group btn-group-sm mt-2" role="group" aria-label="Basic example">
-  				<button type="button" className="btn btn-info" onClick={this.previousPage} disabled={!this.state.prevPage}>Previous</button>
-  				<button type="button" className="btn btn-info" onClick={this.nextPage} disabled={!this.state.nextPage}>Next</button>
-				</div>
-				<PokemonTable pokemons={this.state.pokemons} />
+	return (
+		<div className="container-fluid">
+			<div className="btn-group btn-group-sm mt-2" role="group" aria-label="Basic example">
+			<button type="button" className="btn btn-info" onClick={previousPage} disabled={!state.prevPage}>Previous</button>
+			<button type="button" className="btn btn-info" onClick={nextPage} disabled={!state.nextPage}>Next</button>
 			</div>
-		)
-	}
+			<PokemonTable pokemons={state.pokemons} />
+		</div>
+	)
 }
+
+export default PokemonsPage;

@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import TypeItem from './TypeItem';
 
-export default class TypesTable extends Component {
-	render() {
-		return (
-			<ul className="cards mt-3">
-				{ this.props.types.map(type =>
-					<TypeItem key={ type.name } type={ type } />
-				) }
-			</ul>
-		)
-	}
+const TypesTable = props => {
+	return (
+		<ul className="cards mt-3">
+			{ props.types.map(type =>
+				<TypeItem key={ type.name } type={ type } />
+			) }
+		</ul>
+	)
 }
 
 TypesTable.propTypes = {
 	types: PropTypes.array.isRequired
 }
+
+export default TypesTable;

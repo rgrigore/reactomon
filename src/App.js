@@ -1,14 +1,34 @@
 import './App.css';
-import React, { Component } from 'react';
-import NavBar from './components/NavBar';
+import React, { useState } from 'react';
 
-export default class App extends Component {
-	render() {
-		return (
-			<div>
-				<NavBar />
-			</div>
-		)
+import NavBar from './components/NavBar';
+import PCContext from './components/contexts/PCContext';
+
+const App = () => {
+
+	const [captured, setCaptured] = useState([])
+
+	const toggleCaptured = id => {
+
+		const pokemon = captured;
+		const index = pokemon.indexOf(id);
+
+		if (index > -1) {
+			pokemon.splice(index, 1);
+		} else {
+			pokemon.push(id);
+			pokemon.sort((a, b) => a - b);
+		}
+		setCaptured(pokemon);
 	}
+
+	return (
+		<div>
+			<PCContext.Provider value={{ capturedPKM: captured, toggleCaptured: toggleCaptured }}>
+				<NavBar />
+			</PCContext.Provider>
+		</div>
+	)
 }
- 
+
+export default App;
