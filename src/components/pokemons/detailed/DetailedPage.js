@@ -36,6 +36,8 @@ const DetailedPage = props => {
 		);
 	}, [props.match.params.id]);
 
+	// const { capturedPKM, toggleCaptured } = useContext(PCContext);
+
 	return (
 		<div className="container-lg w-75 mt-5 rounded-lg" style={{ background: "rgb(230, 255, 253)" }}>
 			<div className="row">

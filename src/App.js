@@ -6,6 +6,8 @@ import PCContext from './components/contexts/PCContext';
 
 const App = () => {
 
+	const [captured, setCaptured] = useState([])
+
 	const toggleCaptured = id => {
 
 		const pokemon = captured;
@@ -19,8 +21,6 @@ const App = () => {
 		}
 		setCaptured(pokemon);
 	}
-
-	const [captured, setCaptured] = useState([])
 
 	return (
 		<div>
