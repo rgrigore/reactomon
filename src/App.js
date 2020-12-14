@@ -20,7 +20,7 @@ const App = () => {
 		setCaptured(pokemon);
 	}
 
-	const [captured, setCaptured] = useState([1, 2])
+	const [captured, setCaptured] = useState([])
 
 	return (
 		<div>
