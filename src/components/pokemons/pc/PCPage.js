@@ -8,8 +8,8 @@ const PCPage = () => {
 		<div className="container-fluid">
 			<ul className="cards mt-3">
 				<PCContext.Consumer>
-					{ ({ pokemon }) => (
-						pokemon.map(pkm => 
+					{ ({ capturedPKM }) => (
+						capturedPKM.map(pkm => 
 							<PCItem key={ pkm } id={ pkm } />
 						)
 					) }

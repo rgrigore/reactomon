@@ -24,7 +24,7 @@ const App = () => {
 
 	return (
 		<div>
-			<PCContext.Provider value={{ pokemon: captured, toggleCaptured: toggleCaptured }}>
+			<PCContext.Provider value={{ capturedPKM: captured, toggleCaptured: toggleCaptured }}>
 				<NavBar />
 			</PCContext.Provider>
 		</div>

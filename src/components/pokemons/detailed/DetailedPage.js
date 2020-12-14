@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import DataHandler from '../../../DataHandler';
+import PCContext from '../../contexts/PCContext';
 import InfoTable from './InfoTable';
 import StatsTable from './StatsTable';
+
+import openPKB from '../../../resources/pokeball-open.png';
+import closedPKB from '../../../resources/pokeball-closed.png';
 
 const DetailedPage = props => {
 	
@@ -43,6 +47,18 @@ const DetailedPage = props => {
 				<div className="col-4">
 					<StatsTable stats={ pokemon.stats } />
 				</div>
+
+				<PCContext.Consumer>
+					{ ({ capturedPKM, toggleCaptured }) => (
+						<img 
+							className="position-fixed mt-3 ml-3"
+							src={ capturedPKM.includes(pokemon.id) ? closedPKB : openPKB }
+							onClick={ toggleCaptured.bind(null, pokemon.id) }
+							alt="closed" width="40"
+						/>
+					) }
+				</PCContext.Consumer>
+
 			</div>
 		</div>
 	)
