@@ -20,7 +20,7 @@ const PCItem = props => {
 	}, [props.id])
 
 	return (
-		<PokemonItem key={ pokemon.name } id={ pokemon.id } pokemon={ pokemon } />
+		<PokemonItem key={ pokemon.name } id={ pokemon.id.toString() } pokemon={ pokemon } />
 	)
 }
 
